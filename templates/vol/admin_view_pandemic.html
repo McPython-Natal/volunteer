@@ -36,6 +36,7 @@
           <th>Risk Level</th>
           <th>Impact</th>
           <th>Date</th>
+          <th>Location</th>
          
          
           <th>Delete</th>
@@ -50,7 +51,7 @@
         <td>{{t.risk_level}}</td>
         <td>{{t.impact}}</td>
         <td>{{t.date}}</td>
-        
+        <td>{{t.location}}</td>       
         
         <td><a class="btn btn-danger btn-xs" href="{% url 'delete-pandemic' t.id  %}"><span class="glyphicon glyphicon-trash"></span></a></td>
       </tr>

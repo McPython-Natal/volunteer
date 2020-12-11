@@ -172,6 +172,10 @@ def delete_pandemic_view(request,pk):
 def admin_work_view(request):
     return render(request,'vol/admin_work.html')
 
+@login_required(login_url='adminlogin')
+def admin_team_view(request):
+    return render(request,'vol/admin_team.html')
+
 
 @login_required(login_url='adminlogin')
 def admin_add_work_view(request):
@@ -261,7 +265,44 @@ def apply_work_view(request,pk):
     return HttpResponseRedirect('/volunteer-view-work')
 
 
+@login_required(login_url='adminlogin')
+def admin_add_team_view(request):
+    teamForm=forms.TeamForm()
+    mydict={'teamForm':teamForm}
+    if request.method=='POST':
+        teamForm=forms.TeamForm(request.POST)
+        
+        if teamForm.is_valid():
 
+            team=teamForm.save(commit=False)
+            pandemic=models.Pandemic.objects.get(id=request.POST.get('pandemicId'))
+            member1=models.Volunteer.objects.get(user_id=request.POST.get('member1'))
+            member2=models.Volunteer.objects.get(user_id=request.POST.get('member2'))
+            member3=models.Volunteer.objects.get(user_id=request.POST.get('member3'))
+            member4=models.Volunteer.objects.get(user_id=request.POST.get('member4'))
+            member5=models.Volunteer.objects.get(user_id=request.POST.get('member5'))
+            team.pandemic=pandemic
+            team.member1=member1
+            team.member2=member2
+            team.member3=member3
+            team.member4=member4
+            team.member5=member5
+            team.save()
+
+        return HttpResponseRedirect('admin-view-team')
+    return render(request,'vol/admin_add_team.html',context=mydict)
+
+@login_required(login_url='adminlogin')
+def admin_view_team_view(request):
+    teams=models.Team.objects.all()
+    return render(request,'vol/admin_view_team.html',{'teams':teams})
+
+
+@login_required(login_url='adminlogin')
+def delete_team_view(request,pk):
+    team=models.Team.objects.get(id=pk) 
+    team.delete()
+    return HttpResponseRedirect('/admin-view-team')
 
 
 

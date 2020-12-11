@@ -17,24 +17,33 @@
     
   </style>
 </head>
-<h2 style="text-align:center; color:blue;">ADD PANDEMIC</h2>
+<h2 style="text-align:center; color:blue;">ADD Team</h2>
 <form method="POST" style="margin:100px;margin-top: 0px;">
     {%csrf_token%}
     <div class="form-group">
         <label for="course_name">Pandemic Name</label>
-      {% render_field pandemicForm.name class="form-control" placeholder="COVID-19" %}
+      {% render_field teamForm.pandemicId class="form-control" placeholder="COVID-19" %}
 
       <label for="course_name">Description</label>
-      {% render_field pandemicForm.description class="form-control" placeholder="Corona virus is dangerous" %}
+      {% render_field teamForm.description class="form-control" placeholder="This team is good" %}
 
-      <label for="question_number">Risk Level</label>
-      {% render_field pandemicForm.risk_level class="form-control" placeholder="Very High" %}
+      <label for="course_name">Member 1</label>
+      {% render_field teamForm.member1 class="form-control" %}
 
-      <label for="total_marks">Impact</label>
-      {% render_field pandemicForm.impact class="form-control" placeholder="" %}
+      <label for="course_name">Member 2</label>
+      {% render_field teamForm.member2 class="form-control"  %}
 
-      <label for="location">Location</label>
-      {% render_field pandemicForm.location class="form-control" placeholder="pune" %}
+      <label for="course_name">Member 3</label>
+      {% render_field teamForm.member3 class="form-control"  %}
+
+      <label for="course_name">Member 4</label>
+      {% render_field teamForm.member4 class="form-control"  %}
+
+      <label for="course_name">Member 5</label>
+      {% render_field teamForm.member5 class="form-control" %}
+
+
+
 
     </div>
     

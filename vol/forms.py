@@ -13,7 +13,7 @@ class VolunteerUserForm(forms.ModelForm):
 class VolunteerForm(forms.ModelForm):
     class Meta:
         model=models.Volunteer
-        fields=['address','mobile','profile_pic']
+        fields=['address','mobile','profile_pic','age','certificate']
 
 class ContactusForm(forms.Form):
     Name = forms.CharField(max_length=30)
@@ -37,3 +37,14 @@ class WorkForm(forms.ModelForm):
     class Meta:
         model=models.Work
         fields=['status']
+
+class TeamForm(forms.ModelForm):
+    pandemicId=forms.ModelChoiceField(queryset=models.Pandemic.objects.all(),empty_label="Pandemic Name", to_field_name="id")
+    member1=forms.ModelChoiceField(queryset=models.Volunteer.objects.all().filter(status=True),empty_label="Member 1 Name", to_field_name="user_id")
+    member2=forms.ModelChoiceField(queryset=models.Volunteer.objects.all().filter(status=True),empty_label="Member 2 Name", to_field_name="user_id")
+    member3=forms.ModelChoiceField(queryset=models.Volunteer.objects.all().filter(status=True),empty_label="Member 3 Name", to_field_name="user_id")
+    member4=forms.ModelChoiceField(queryset=models.Volunteer.objects.all().filter(status=True),empty_label="Member 4 Name", to_field_name="user_id")
+    member5=forms.ModelChoiceField(queryset=models.Volunteer.objects.all().filter(status=True),empty_label="Member 5 Name", to_field_name="user_id")
+    class Meta:
+        model=models.Team
+        fields=['description']

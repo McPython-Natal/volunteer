@@ -46,7 +46,7 @@
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="mobile">Mobile</label>
-          {% render_field volunteerForm.mobile|attr:'required:true'  class="form-control" placeholder="Mobile" %}
+          {% render_field volunteerForm.mobile|attr:'required:true' pattern="[6789][0-9]{9}"  title="Number should start with 6,7,8,9 and must be 10 digit" class="form-control" placeholder="Mobile" %}
         </div>
         <div class="form-group col-md-6">
           <label for="address">Address</label>
@@ -55,9 +55,24 @@
       </div>
 
       <div class="form-row">
-        <div class="form-group col-md-12">
+        <div class="form-group col-md-6">
+          <label for="profile_pic">Age</label>
+          {% render_field volunteerForm.age|attr:'required:true' pattern="[23][0-9]" title="Age must be between 20 to 39" class="form-control" placeholder="19" %}
+        </div>
+
+        <div class="form-group col-md-6">
           <label for="profile_pic">Profile Picture</label>
           {% render_field volunteerForm.profile_pic|attr:'required:true' class="form-control" placeholder="" %}
+        </div>
+        
+      </div>
+
+      
+      <div class="form-row">
+        
+        <div class="form-group col-md-12">
+          <label for="profile_pic">Certificate</label>
+          {% render_field volunteerForm.certificate|attr:'required:true' class="form-control" placeholder="" %}
         </div>
         
       </div>

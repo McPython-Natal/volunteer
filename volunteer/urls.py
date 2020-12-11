@@ -33,7 +33,7 @@ urlpatterns = [
 
     path('admin-dashboard', views.admin_dashboard_view,name='admin-dashboard'),
     path('admin-volunteer', views.admin_volunteer_view,name='admin-volunteer'),
-
+    
     path('admin-view-volunteer', views.admin_view_volunteer_view,name='admin-view-volunteer'),
     path('update-volunteer/<int:pk>', views.update_volunteer_view,name='update-volunteer'),
     path('delete-volunteer/<int:pk>', views.delete_volunteer_view,name='delete-volunteer'),
@@ -55,8 +55,11 @@ urlpatterns = [
     path('delete-work/<int:pk>', views.delete_work_view,name='delete-work'),
   
 
-
-
+    path('admin-team', views.admin_team_view,name='admin-team'),
+    path('admin-add-team', views.admin_add_team_view,name='admin-add-team'),
+    path('admin-view-team', views.admin_view_team_view,name='admin-view-team'),
+    path('delete-team/<int:pk>', views.delete_team_view,name='delete-team'),
+  
 
     path('volunteer-dashboard', views.volunteer_dashboard_view,name='volunteer-dashboard'),
     path('volunteer-work', views.volunteer_work_view,name='volunteer-work'),
