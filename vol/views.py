@@ -100,6 +100,23 @@ def update_volunteer_view(request,pk):
             return redirect('admin-view-volunteer')
     return render(request,'vol/update_volunteer.html',context=mydict)
 
+@login_required(login_url='adminlogin')
+def update_profile_view(request):
+    volunteer=models.Volunteer.objects.get(user_id=request.user.id) 
+    user=models.User.objects.get(id=volunteer.user_id)
+    userForm=forms.VolunteerUserForm(instance=user)
+    volunteerForm=forms.VolunteerForm(request.FILES,instance=volunteer)
+    mydict={'userForm':userForm,'volunteerForm':volunteerForm}
+    if request.method=='POST':
+        userForm=forms.VolunteerUserForm(request.POST,instance=user)
+        volunteerForm=forms.VolunteerForm(request.POST,request.FILES,instance=volunteer)
+        if userForm.is_valid() and volunteerForm.is_valid():
+            user=userForm.save()
+            user.set_password(user.password)
+            user.save()
+            volunteerForm.save()
+            return redirect('/')
+    return render(request,'vol/update_profile.html',context=mydict)
 
 
 @login_required(login_url='adminlogin')

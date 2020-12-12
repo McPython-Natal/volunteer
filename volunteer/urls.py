@@ -68,6 +68,7 @@ urlpatterns = [
     path('volunteer-view-work', views.volunteer_view_work_view,name='volunteer-view-work'),
     path('volunteer-pandemic', views.volunteer_pandemic_view,name='volunteer-pandemic'),
 
+    path('update-profile/', views.update_profile_view,name='update-profile'),
 
 
     path('logout', LogoutView.as_view(template_name='vol/logout.html'),name='logout'),
