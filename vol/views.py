@@ -64,7 +64,9 @@ def afterlogin_view(request):
 def admin_dashboard_view(request):
     dict={ 
     'total_volunteer':models.Volunteer.objects.all().filter(status=True).count(),
-    'total_pending_volunteer':models.Volunteer.objects.all().filter(status=False).count(),   
+    'total_pandemic':models.Pandemic.objects.all().count(),
+    'total_team':models.Team.objects.all().count(),
+    'total_work_request':models.WorkRequest.objects.all().filter(status='pending').count(),   
     }
     return render(request,'vol/admin_dashboard.html',context=dict)
 
@@ -97,6 +99,7 @@ def update_volunteer_view(request,pk):
             user.set_password(user.password)
             user.save()
             volunteerForm.save()
+            print('hiiiiiiiiiii')
             return redirect('admin-view-volunteer')
     return render(request,'vol/update_volunteer.html',context=mydict)
 
@@ -275,7 +278,7 @@ def volunteer_apply_work_view(request):
 def apply_work_view(request,pk):
     pandemic=models.Pandemic.objects.get(id=pk)
     volunteer = models.Volunteer.objects.get(user_id=request.user.id)
-    work=models.Work()
+    work=models.WorkRequest()
     work.pandemic=pandemic
     work.volunteer=volunteer
     work.save()
@@ -320,6 +323,31 @@ def delete_team_view(request,pk):
     team=models.Team.objects.get(id=pk) 
     team.delete()
     return HttpResponseRedirect('/admin-view-team')
+
+
+@login_required(login_url='adminlogin')
+def volunteer_work_request_view(request):
+    workrequest=models.WorkRequest.objects.all().filter(status='pending')
+    return render(request,'vol/volunteer_work_request.html',{'workrequest':workrequest})
+
+@login_required(login_url='adminlogin')
+def approve_request_view(request,pk):
+    workrequest=models.WorkRequest.objects.get(id=pk)
+    workrequest.status='confirmed'
+    work=models.Work()
+    work.pandemic=workrequest.pandemic
+    work.volunteer=workrequest.volunteer
+    work.save()
+    workrequest.save()
+    return HttpResponseRedirect('/volunteer-work-request')
+    
+
+@login_required(login_url='adminlogin')
+def reject_request_view(request,pk):
+    workrequest=models.WorkRequest.objects.get(id=pk)
+    workrequest.delete()
+    return HttpResponseRedirect('/volunteer-work-request')
+
 
 
 

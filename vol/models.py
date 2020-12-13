@@ -32,7 +32,14 @@ class Pandemic(models.Model):
 class Work(models.Model):
     pandemic=models.ForeignKey(Pandemic,on_delete=models.CASCADE)
     volunteer=models.ForeignKey(Volunteer,on_delete=models.CASCADE)
-    status=models.CharField(max_length=100)
+    status=models.CharField(max_length=100,default='Started Working')
+    date=models.DateField(auto_now=True)
+
+class WorkRequest(models.Model):
+    choice=(('pending','pending'),('confirm','confirm'))
+    pandemic=models.ForeignKey(Pandemic,on_delete=models.CASCADE)
+    volunteer=models.ForeignKey(Volunteer,on_delete=models.CASCADE)
+    status=models.CharField(max_length=20,choices=choice,default='pending')
     date=models.DateField(auto_now=True)
 
 

@@ -35,7 +35,7 @@
 </head>
 
 <br><br>
-<h3 style="text-align:center;">UPDATE PROFILE</h3>
+<h3 style="text-align:center;">UPDATE VOLUNTEER</h3>
 <div>
   <form method="post"  enctype="multipart/form-data" style="margin-left:200px;margin-right:200px;">
       {% csrf_token %}
@@ -45,6 +45,8 @@
         {% render_field userForm.last_name class="form-control" placeholder="Last Name" %}
           <label for="mobile">Mobile</label>
           {% render_field volunteerForm.mobile class="form-control" placeholder="Mobile" %}
+          <label for="age">Age</label>
+          {% render_field volunteerForm.age class="form-control" placeholder="Age" %}
             <label for="address">Address</label>
           {% render_field volunteerForm.address class="form-control" placeholder="Address" %}
           
@@ -53,7 +55,10 @@
           <label for="password">Password</label>
         {% render_field userForm.password class="form-control" placeholder="Password" %} <br><br>
         <label for="profile_pic">Profile Picture</label>
-          {% render_field volunteerForm.profile_pic class="form-control" placeholder="Profile Picture" %}
+          {% render_field volunteerForm.profile_pic class="form-control" %}
+<br><br>
+          <label for="profile_pic">Certificate</label>
+          {% render_field volunteerForm.certificate class="form-control"  %}
 <br><br>
     <input type="submit" value="Update">
   </form>

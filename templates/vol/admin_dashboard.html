@@ -30,7 +30,7 @@
       }
   
       .bg-c-yellow {
-        background: #F56565;
+        background: #fa1a1a;
       }
   
       .bg-c-pink {
@@ -42,7 +42,7 @@
         
         -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
         box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
-        border: 1px solid black;
+        
         margin-bottom: 30px;
         -webkit-transition: all 0.3s ease-in-out;
         transition: all 0.3s ease-in-out;
@@ -70,24 +70,47 @@
     </style>
   </head>
 <br><br>
+<div class="container">
+  <div class="row">
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4 col-xl-6">
+<div class="col-md-4 col-xl-3">
+  <div class="card bg-c-yellow order-card">
+    <div class="card-block">
+      <h6 class="m-b-20"><a href="admin-view-pandemic" style="text-decoration: none;color:white;">Total Pandemic</a></h6>
+     <h2 class="text-right"><i class="fas fa-user-md f-left"></i><span>{{total_pandemic}}</span></h2>
+      
+    </div>
+  </div>
+</div>
+
+<div class="col-md-4 col-xl-3">
+  <div class="card bg-c-pink order-card">
+    <div class="card-block">
+      <h6 class="m-b-20"><a href="admin-view-team" style="text-decoration: none;color:white;">Total Team</a></h6>
+      <h2 class="text-right"><i class="fas fa-user-friends f-left"></i><span>{{total_team}}</span></h2>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+      <div class="col-md-4 col-xl-3">
         <div class="card bg-c-blue order-card">
           <div class="card-block">
             <h6 class="m-b-20"> <a href="admin-view-volunteer" style="text-decoration: none;color:white;">Total Volunteer</a> </h6>
-            <h2 class="text-right"><i class="fas fa-user f-left"></i><span>{{total_volunteer}}</span></h2>
+            <h2 class="text-right"><i class="fas fa-users f-left"></i><span>{{total_volunteer}}</span></h2>
             
           </div>
         </div>
       </div>
   
-      <div class="col-md-4 col-xl-6">
+      <div class="col-md-4 col-xl-3">
         <div class="card bg-c-green order-card">
           <div class="card-block">
-            <h6 class="m-b-20"><a href="admin-view-pending-volunteer" style="text-decoration: none;color:white;">Total Pending Volunteer</a> </h6>
-            <h2 class="text-right"><i class="fas fa-spinner f-left"></i><span>{{total_pending_volunteer}}</span></h2>
+            <h6 class="m-b-20"><a href="admin-view-pending-volunteer" style="text-decoration: none;color:white;">Total Work Request</a> </h6>
+            <h2 class="text-right"><i class="fas fa-spinner f-left"></i><span>{{total_work_request}}</span></h2>
             
           </div>
         </div>

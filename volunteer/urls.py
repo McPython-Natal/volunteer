@@ -68,6 +68,10 @@ urlpatterns = [
     path('volunteer-view-work', views.volunteer_view_work_view,name='volunteer-view-work'),
     path('volunteer-pandemic', views.volunteer_pandemic_view,name='volunteer-pandemic'),
 
+    path('volunteer-work-request', views.volunteer_work_request_view,name='volunteer-work-request'),
+    path('approve-request/<int:pk>', views.approve_request_view,name='approve-request'),
+    path('reject-request/<int:pk>', views.reject_request_view,name='reject-request'),
+
     path('update-profile/', views.update_profile_view,name='update-profile'),
 
 

@@ -38,6 +38,9 @@ class WorkForm(forms.ModelForm):
         model=models.Work
         fields=['status']
 
+
+
+
 class TeamForm(forms.ModelForm):
     pandemicId=forms.ModelChoiceField(queryset=models.Pandemic.objects.all(),empty_label="Pandemic Name", to_field_name="id")
     member1=forms.ModelChoiceField(queryset=models.Volunteer.objects.all().filter(status=True),empty_label="Member 1 Name", to_field_name="user_id")

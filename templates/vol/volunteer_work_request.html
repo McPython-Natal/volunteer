@@ -25,32 +25,31 @@
 <div class="container">
   <div class="panel panel-primary">
     <div class="panel-heading">
-      <h6 class="panel-title">Approve Volunteers Request For Following Pandemic</h6>
+      <h6 class="panel-title">Approve Volunteers For Pandemic</h6>
     </div>
     <table class="table table-hover" id="dev-table">
       <thead>
         <tr>
 
-          <th>Name</th>
-          <th>Profile Picture</th>
-          <th>Mobile</th>
-          <th>Address</th>
-          <th>Request Status</th>
+          <th>Volunteer Name</th>
+          <th>Pandemic</th>
+          <th>Request Date</th>
+          
          
           <th>Approve</th>
           <th>Reject</th>
         </tr>
       </thead>
-      {% for t in volunteers %}
+      {% for t in workrequest %}
       <tr>
 
-        <td> {{t.get_name}}</td>
-        <td> <img src="{% static t.profile_pic.url %}" alt="Profile Pic" height="40px" width="40px" /></td>
-        <td>{{t.mobile}}</td>
-        <td>{{t.address}}</td>
-        <td>{{t.status}}</td>
-        <td><a class="btn btn-primary btn-xs" href="{% url 'approve-volunteer' t.id  %}"><span class="glyphicon glyphicon-ok"></span></a></td>
-        <td><a class="btn btn-danger btn-xs" href="{% url 'reject-volunteer' t.id  %}"><span class="	glyphicon glyphicon-remove"></span></a></td>
+        <td> {{t.volunteer}}</td>
+        
+        <td>{{t.pandemic}}</td>
+        <td>{{t.date}}</td>
+        
+        <td><a class="btn btn-primary btn-xs" href="{% url 'approve-request' t.id  %}"><span class="glyphicon glyphicon-ok"></span></a></td>
+        <td><a class="btn btn-danger btn-xs" href="{% url 'reject-request' t.id  %}"><span class="	glyphicon glyphicon-remove"></span></a></td>
      </tr>
       {% endfor %}
     </table>
